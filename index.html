@@ -1291,10 +1291,19 @@
     btn.innerHTML = 'Envoi en cours... <span class="btn-arrow">⏳</span>';
 
     try {
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const jsonBody = JSON.stringify(object);
+
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: new FormData(form)
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: jsonBody
       });
+
       const json = await res.json();
 
       if (json.success) {
@@ -1302,7 +1311,7 @@
         bar.classList.add('hidden');
         success.classList.add('show');
       } else {
-        throw new Error('Erreur');
+        throw new Error(json.message || 'Erreur');
       }
     } catch (err) {
       btn.classList.remove('loading');
