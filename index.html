@@ -1104,106 +1104,103 @@
     <!-- RIGHT FORM -->
     <div class="booking-form-card fade-up">
 
-      <!-- SUCCESS STATE (hidden by default) -->
+      <!-- SUCCESS STATE -->
       <div class="form-success-msg" id="formSuccess">
         <div class="success-check">✅</div>
         <div class="success-h">Demande Envoyée !</div>
         <p class="success-p">On vous contacte dans les 24h pour confirmer votre créneau. Vérifiez vos courriels.</p>
       </div>
 
-      <!-- FORM FIELDS -->
-      <div class="form-fields" id="formFields">
+      <!-- FORM -->
+      <form id="bookingForm" onsubmit="submitForm(event)">
 
-        <!-- ════════════════════════════════════════════
-             INSTRUCTIONS WEB3FORMS (100% gratuit)
-             ════════════════════════════════════════════
-             1. Va sur web3forms.com
-             2. Entre ton adresse courriel → clique "Create my Access Key"
-             3. Remplace "VOTRE_CLE_WEB3FORMS" ci-dessous par ta clé
-             ════════════════════════════════════════════ -->
-        <input type="hidden" name="access_key" value="fb12e7d3-ea52-41f8-9f13-80ae9aa9d9c6">
-        <input type="hidden" name="subject" value="Nouvelle demande de nettoyage — P.R.O Auto Detailing">
-        <input type="hidden" name="from_name" value="Site PRO Auto Detailing">
-        <input type="hidden" name="replyto" value="support@proautodetailing.ca">
-        <input type="checkbox" name="botcheck" style="display:none">
+        <div class="form-fields" id="formFields">
 
-        <div class="f-row">
-          <div class="f-field">
-            <label>Prénom</label>
-            <input type="text" name="prenom" placeholder="Jean" required>
+          <input type="hidden" name="access_key" value="fb12e7d3-ea52-41f8-9f13-80ae9aa9d9c6">
+          <input type="hidden" name="subject" value="Nouvelle demande de nettoyage — P.R.O Auto Detailing">
+          <input type="hidden" name="from_name" value="Site PRO Auto Detailing">
+          <input type="hidden" name="replyto" value="support@proautodetailing.ca">
+          <input type="checkbox" name="botcheck" style="display:none">
+
+          <div class="f-row">
+            <div class="f-field">
+              <label>Prénom</label>
+              <input type="text" name="prenom" placeholder="Jean" required>
+            </div>
+            <div class="f-field">
+              <label>Nom</label>
+              <input type="text" name="nom" placeholder="Tremblay" required>
+            </div>
           </div>
-          <div class="f-field">
-            <label>Nom</label>
-            <input type="text" name="nom" placeholder="Tremblay" required>
+
+          <div class="f-row">
+            <div class="f-field">
+              <label>Courriel</label>
+              <input type="email" name="email" placeholder="jean@exemple.ca" required>
+            </div>
+            <div class="f-field">
+              <label>Téléphone</label>
+              <input type="tel" name="telephone" placeholder="(514) 000-0000">
+            </div>
           </div>
+
+          <div class="f-row solo">
+            <div class="f-field">
+              <label>Type de véhicule</label>
+              <select name="vehicule" required>
+                <option value="" disabled selected>Choisissez votre véhicule...</option>
+                <option>Auto</option>
+                <option>SUV</option>
+                <option>Camion / SUV Large</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-row solo">
+            <div class="f-field">
+              <label>Quel service vous intéresse ?</label>
+              <select name="service" required>
+                <option value="" disabled selected>Choisissez un service...</option>
+                <optgroup label="🌿 Offre Printemps -40%">
+                  <option>Nettoyage Extérieur (-40%)</option>
+                  <option>Nettoyage Intérieur (-40%)</option>
+                  <option>Nettoyage Complet (-40%)</option>
+                </optgroup>
+                <optgroup label="Services Additionnels">
+                  <option>Décontamination Rouille</option>
+                  <option>Water Spot Remover</option>
+                  <option>Nettoyage Moteur</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <div class="f-row solo">
+            <div class="f-field">
+              <label>Votre adresse (où on se déplace)</label>
+              <input type="text" name="adresse" placeholder="123 Rue Exemple, Montréal, QC">
+            </div>
+          </div>
+
+          <div class="f-row solo">
+            <div class="f-field">
+              <label>Parlez-nous de votre projet</label>
+              <textarea name="message" placeholder="Ex: Toyota RAV4 2020, intérieur très sale suite à l'hiver, disponible en semaine..."></textarea>
+            </div>
+          </div>
+
         </div>
 
-        <div class="f-row">
-          <div class="f-field">
-            <label>Courriel</label>
-            <input type="email" name="email" placeholder="jean@exemple.ca" required>
-          </div>
-          <div class="f-field">
-            <label>Téléphone</label>
-            <input type="tel" name="telephone" placeholder="(514) 000-0000">
-          </div>
+        <!-- STICKY SUBMIT BAR -->
+        <div class="form-bottom-bar" id="formBar">
+          <button class="btn-envoyer" id="submitBtn" type="submit">
+            ENVOYER MA DEMANDE <span class="btn-arrow">→</span>
+          </button>
         </div>
 
-        <div class="f-row solo">
-          <div class="f-field">
-            <label>Type de véhicule</label>
-            <select name="vehicule" required>
-              <option value="" disabled selected>Choisissez votre véhicule...</option>
-              <option>Auto</option>
-              <option>SUV</option>
-              <option>Camion / SUV Large</option>
-            </select>
-          </div>
-        </div>
+      </form>
 
-        <div class="f-row solo">
-          <div class="f-field">
-            <label>Quel service vous intéresse ?</label>
-            <select name="service" required>
-              <option value="" disabled selected>Choisissez un service...</option>
-              <optgroup label="🌿 Offre Printemps -40%">
-                <option>Nettoyage Extérieur (-40%)</option>
-                <option>Nettoyage Intérieur (-40%)</option>
-                <option>Nettoyage Complet (-40%)</option>
-              </optgroup>
-              <optgroup label="Services Additionnels">
-                <option>Décontamination Rouille</option>
-                <option>Water Spot Remover</option>
-                <option>Nettoyage Moteur</option>
-              </optgroup>
-            </select>
-          </div>
-        </div>
-
-        <div class="f-row solo">
-          <div class="f-field">
-            <label>Votre adresse (où on se déplace)</label>
-            <input type="text" name="adresse" placeholder="123 Rue Exemple, Montréal, QC">
-          </div>
-        </div>
-
-        <div class="f-row solo">
-          <div class="f-field">
-            <label>Parlez-nous de votre projet</label>
-            <textarea name="message" placeholder="Ex: Toyota RAV4 2020, intérieur très sale suite à l'hiver, disponible en semaine..."></textarea>
-          </div>
-        </div>
-
-      </div><!-- /form-fields -->
-
-      <!-- STICKY SUBMIT BAR -->
-      <div class="form-bottom-bar" id="formBar">
-        <button class="btn-envoyer" id="submitBtn" type="button" onclick="submitForm()">
-          ENVOYER MA DEMANDE <span class="btn-arrow">→</span>
-        </button>
-      </div>
-
-    </div><!-- /booking-form-card -->
+    </div>
   </div>
 </section>
 
@@ -1281,40 +1278,22 @@
   });
 
   // ── WEB3FORMS SUBMISSION ──
-  async function submitForm() {
+  async function submitForm(e) {
+    e.preventDefault();
+
     const btn = document.getElementById('submitBtn');
     const fields = document.getElementById('formFields');
     const bar = document.getElementById('formBar');
     const success = document.getElementById('formSuccess');
+    const form = document.getElementById('bookingForm');
 
-    // Collect all named inputs inside the card
-    const card = btn.closest('.booking-form-card');
-    const inputs = card.querySelectorAll('input[name], select[name], textarea[name]');
-
-    // Basic validation
-    let valid = true;
-    inputs.forEach(el => {
-      if (el.required && !el.value.trim()) {
-        el.style.borderColor = 'rgba(231,76,60,0.6)';
-        valid = false;
-      } else {
-        el.style.borderColor = '';
-      }
-    });
-    if (!valid) return;
-
-    // Build FormData
-    const data = new FormData();
-    inputs.forEach(el => { if (el.name) data.append(el.name, el.value); });
-
-    // Send
     btn.classList.add('loading');
     btn.innerHTML = 'Envoi en cours... <span class="btn-arrow">⏳</span>';
 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: data
+        body: new FormData(form)
       });
       const json = await res.json();
 
@@ -1323,9 +1302,9 @@
         bar.classList.add('hidden');
         success.classList.add('show');
       } else {
-        throw new Error('Erreur envoi');
+        throw new Error('Erreur');
       }
-    } catch (e) {
+    } catch (err) {
       btn.classList.remove('loading');
       btn.innerHTML = '⚠️ Erreur — Réessayez <span class="btn-arrow">→</span>';
       setTimeout(() => {
@@ -1333,11 +1312,6 @@
       }, 3000);
     }
   }
-
-  // Allow Enter key to submit
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && e.ctrlKey) submitForm();
-  });
 </script>
 
 </body>
